@@ -8,5 +8,19 @@ RSpec.describe DarkskyService do
   end
 
   describe 'instance methods' do
+    describe '.forcast' do
+      it 'returns forcast data for a location' do
+        service = DarkskyService.new
+
+        response = service.forcast(37.8267,-122.4233)
+
+        expect(response).to be_a(Hash)
+        expect(response).to have_key(:currently)
+        expect(response).to have_key(:minutely)
+        expect(response).to have_key(:hourly)
+        expect(response).to have_key(:daily)
+        expect(response[:daily][:data]).to be_a(Array)
+      end
+    end
   end
 end
