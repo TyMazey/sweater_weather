@@ -21,9 +21,17 @@ class Location < ApplicationRecord
                     longitude: info[:lng])
   end
 
+  def request_forcast
+    darkskyservice.forcast(self.latitude, self.longitude)
+  end
+
   private
 
-  def geoservice
+  def darkskyservice
+    @darkskyservice ||= DarkskyService.new
+  end
+
+  def self.geoservice
     @geoservice ||= GeocodeService.new
   end
 end
