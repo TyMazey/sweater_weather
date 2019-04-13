@@ -12,7 +12,7 @@ RSpec.describe GeocodeService do
       it 'can return the latitude and longitude for a location' do
         service = GeocodeService.new
 
-        response = service.get_geocode(citystate)
+        response = service.get_geocode("Denver,CO")
 
         expect(response).to be_a(Hash)
         expect(response).to have_key(:lat)
