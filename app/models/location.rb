@@ -13,4 +13,17 @@ class Location < ApplicationRecord
       location.request_forcast
     end
   end
+
+  def self.new_city(citystate)
+    info = geoservice.get_geocode(citystate)
+    Location.create(citystate: citystate,
+                    latitude: info[:lat],
+                    longitude: info[:lng])
+  end
+
+  private
+
+  def geoservice
+    @geoservice ||= GeocodeService.new
+  end
 end
