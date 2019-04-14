@@ -34,5 +34,18 @@ RSpec.describe FavoriteFacade do
         expect(city.citystate).to eq("Denver,CO")
       end
     end
+
+    describe 'remove_favorite' do
+      it 'creates a refrence for the user and the location as a favorite' do
+        user = User.create(email: "e", password: "p", api_key: "a")
+        location = Location.create(citystate: 'a,a', latitude: "1", longitude: "1", image_url: "img")
+        Favorite.create(user: user, location: location)
+        facade = FavoriteFacade.new(user, 'a,a')
+
+        facade.remove_favorite
+      
+        expect(user.locations).to eq([])
+      end
+    end
   end
 end
