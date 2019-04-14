@@ -33,7 +33,7 @@ RSpec.describe LocationFacade do
         expect(new_location.citystate).to eq("Golden, CO")
         expect(new_location.latitude).to eq("39.755543")
         expect(new_location.longitude).to eq("-105.2210997")
-        expect(returned.image_url).to eq("https:\/\/live.staticflickr.com\/7830\/47499079331_34d03d300e_b.jpg")
+        expect(new_location.image_url).to eq("https://live.staticflickr.com/7865/47599375131_74b79765f2_b.jpg")
       end
     end
   end

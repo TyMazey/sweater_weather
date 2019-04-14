@@ -13,10 +13,9 @@ RSpec.describe FlickrService do
       it 'gets an image url for a location' do
         service = FlickrService.new
 
-        image = service.get_image({lat: "39.755543", long: "-105.2210997"})
+        image = service.get_image({lat: "39.755543", lng: "-105.2210997"})
 
         expect(image).to be_a(String)
-        binding.pry
       end
     end
   end

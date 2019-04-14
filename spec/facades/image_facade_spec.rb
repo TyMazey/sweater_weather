@@ -13,7 +13,7 @@ RSpec.describe ImageFacade do
       it 'returns an image object for the location' do
         facade = ImageFacade.new("location")
 
-        expect(facade.image_for_loaction).to be_a(Image)
+        expect(facade.image_for_location).to be_a(Location)
       end
     end
   end

@@ -10,7 +10,7 @@ class LocationFacade
     else
       location_data = geocodeservice.get_geocode(@citystate)
       image_url = flickrservice.get_image(location_data)
-      location = Location.create!(citystate: @citystate,
+      location = Location.create(citystate: @citystate,
         latitude: location_data[:lat],
         longitude: location_data[:lng],
         image_url: image_url)
