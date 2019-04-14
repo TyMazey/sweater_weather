@@ -8,11 +8,11 @@ RSpec.describe DarkskyService do
   end
 
   describe 'instance methods' do
-    describe '.forcast' do
+    describe '.forecast' do
       it 'returns forcast data for a location' do
         service = DarkskyService.new
 
-        response = service.forcast("37.8267","-122.4233")
+        response = service.forecast("37.8267","-122.4233")
 
         expect(response).to be_a(Hash)
         expect(response).to have_key(:currently)

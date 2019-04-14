@@ -1,12 +1,12 @@
 class DarkskyService
 
-  def forcast(lat, long)
-    get_json(forcast_request(lat, long))
+  def forecast(lat, long)
+    get_json(forecast_request(lat, long))
   end
 
   private
 
-  def forcast_request(lat, long)
+  def forecast_request(lat, long)
     conn.get("#{lat},#{long}") do
     end
   end
