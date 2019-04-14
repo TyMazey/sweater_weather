@@ -16,6 +16,9 @@ RSpec.describe User, type: :model do
         next_res = User.validate_new({email: "email", password: "123", password_confirmation: "123"})
 
         expect(next_res).to eq(false)
+        another_res = User.validate_new({email: "email123", password: "12345", password_confirmation: "123"})
+
+        expect(another_res).to eq(nil)
       end
     end
   end
