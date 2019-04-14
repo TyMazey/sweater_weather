@@ -1,15 +1,18 @@
 require 'rails_helper'
 
-describe 'Internal API' do
-  it 'returns user  data for the giving location' do
+describe 'Forecast API' do
+  it 'sends forecast information of a place' do
 
-  get '/api/v1/forecast?location=denver,co'
-  binding.pry
-    expect(response).to be_succesful
+    get '/api/v1/forecast?location=denver,co'
 
-    response = JSON.parse(response.body, symbolize_names: true)
+    expect(response).to be_successful
 
-    expect(response).to be_a(Hash)
-    expect(response[:data])
+    forecast = JSON.parse(response.body, symbolize_names: true)
+    expect(forecast).to have_key(:current)
+    expect(forecast[:current][:data]).to be_a(Hash)
+    expect(forecast).to have_key(:daily)
+    expect(forecast[:daily][:data]).to be_a(Array)
+    expect(forecast).to have_key(:hourly)
+    expect(forecast[:hourly][:data]).to be_a(Array)
   end
 end

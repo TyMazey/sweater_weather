@@ -3,13 +3,13 @@ require 'rails_helper'
 RSpec.describe CurrentWeather do
 
   it 'exist' do
-    forecast = CurrentWeather.new(weather_stub)
+    forecast = CurrentWeather.new("denver,co", weather_stub)
 
     expect(forecast).to be_a(CurrentWeather)
   end
 
   it 'has attributes' do
-    forecast = CurrentWeather.new(weather_stub)
+    forecast = CurrentWeather.new("denver,co", weather_stub)
 
     expect(forecast.country).to eq("America")
     expect(forecast.time).to eq("02:56 PM, 13/04")
