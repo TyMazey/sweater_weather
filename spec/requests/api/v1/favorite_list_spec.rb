@@ -7,7 +7,7 @@ describe 'Favorite list API' do
     Favorite.create(user: user, location: location)
 
     headers = {content_type: "application/json"}
-    post "/api/v1/favorites", params: {
+    get "/api/v1/favorites", params: {
          "location": "Denver,CO",
          "api_key": "abc"
         }
@@ -15,15 +15,15 @@ describe 'Favorite list API' do
     expect(response).to be_successful
     expect(response.status).to eq(200)
     json = JSON.parse(response.body, symbolize_names: true)
-    binding.pry
-    expect(json).to have_key
+    expect(json).to have_key(:data)
+    expect(json[:data][0][:attributes][:address]).to eq("denver,co")
   end
 
   it 'gets 401 with bad api key' do
     user = User.create( email: "email", password: "pass", api_key: "abc")
 
     headers = {content_type: "application/json"}
-    post "/api/v1/favorites", params: {
+    get "/api/v1/favorites", params: {
          "location": "Denver,CO",
          "api_key": "badkey"
         }
