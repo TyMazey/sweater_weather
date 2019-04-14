@@ -9,8 +9,7 @@ RSpec.describe ForecastFacade do
   end
 
   describe 'instance methods' do
-
-    describe '._info' do
+    describe '.forecast_info' do
       it 'returns  data for a location' do
         location = Location.create(citystate: "Denver,CO",
                                   latitude: "37.8267",
@@ -25,31 +24,6 @@ RSpec.describe ForecastFacade do
         expect(response).to have_key(:hourly)
         expect(response).to have_key(:daily)
         expect(response[:daily][:data]).to be_a(Array)
-      end
-    end
-
-    describe 'get_location' do
-      it 'returns location object based on citystate' do
-        location = Location.create(citystate: "Denver, CO",
-                                  latitude: "37.8267",
-                                  longitude: "-122.4233")
-        facade = ForecastFacade.new("Denver, CO")
-        returned = facade.get_location
-
-        expect(returned).to be_a(Location)
-        expect(returned.citystate).to eq("Denver, CO")
-        expect(returned.latitude).to eq("37.8267")
-        expect(returned.longitude).to eq("-122.4233")
-      end
-
-      it 'returns a location object for citys not in DB yet' do
-        facade = ForecastFacade.new("Golden, CO")
-        new_location = facade.get_location
-
-        expect(new_location).to be_a(Location)
-        expect(new_location.citystate).to eq("Golden, CO")
-        expect(new_location.latitude).to eq("39.755543")
-        expect(new_location.longitude).to eq("-105.2210997")
       end
     end
 
