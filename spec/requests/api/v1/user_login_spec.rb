@@ -9,5 +9,10 @@ describe 'sessions api' do
   "password": "password"
   }
 
+  expect(response).to be_successful
+  expect(response.status).to eq(200)
+  json = JSON.parse(response.body, symbolize_names: true)
+
+  expect(json).to have_key(:api_key)
   end
 end

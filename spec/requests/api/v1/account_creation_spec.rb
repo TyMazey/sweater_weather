@@ -11,7 +11,7 @@ describe 'Login API' do
 }
 
     expect(response).to be_successful
-    expect(response.status).to eq(200)
+    expect(response.status).to eq(201)
     json = JSON.parse(response.body, symbolize_names: true)
 
     expect(json).to have_key(:api_key)
