@@ -16,7 +16,7 @@ class DarkskyService
   end
 
   def conn
-    Faraday.new("https://api.darksky.net/forecast/b0d2ec981f7d8e69000e14dbf6f264c4/") do |faraday|
+    Faraday.new("https://api.darksky.net/forecast/#{ENV['DARKSKY_KEY']}/") do |faraday|
       faraday.adapter Faraday.default_adapter
     end
   end
