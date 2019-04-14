@@ -9,7 +9,7 @@ class ForecastFacade
   end
 
   def current_weather
-    CurrentWeather.new(get_forecast)
+    CurrentWeather.new(@citystate, get_forecast)
   end
 
   def daily_weather

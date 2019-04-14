@@ -9,7 +9,7 @@ RSpec.describe DarkskyService do
 
   describe 'instance methods' do
     describe '.forecast' do
-      it 'returns forcast data for a location' do
+      it 'returns  data for a location' do
         service = DarkskyService.new
 
         response = service.forecast("37.8267","-122.4233")

@@ -10,8 +10,8 @@ RSpec.describe ForecastFacade do
 
   describe 'instance methods' do
 
-    describe '.forcast_info' do
-      it 'returns forcast data for a location' do
+    describe '._info' do
+      it 'returns  data for a location' do
         location = Location.create(citystate: "Denver,CO",
                                   latitude: "37.8267",
                                   longitude: "-122.4233")
@@ -54,7 +54,7 @@ RSpec.describe ForecastFacade do
     end
 
     describe 'current_weather' do
-      it 'returns a forcast object for the location' do
+      it 'returns a  object for the location' do
         facade = ForecastFacade.new("Denver, CO")
         forecast = facade.current_weather
 

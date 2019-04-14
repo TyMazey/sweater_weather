@@ -1,5 +1,7 @@
 class CurrentWeather
-  attr_reader :country,
+  attr_reader :id,
+              :address,
+              :country,
               :time,
               :summary,
               :icon,
@@ -13,7 +15,9 @@ class CurrentWeather
               :temp_low,
               :tonight
 
-  def initialize(info)
+  def initialize(address, info)
+    @id = 1
+    @address = address
     @country = onlycountry(info[:timezone])
     @time = Time.at(info[:currently][:time]).strftime("%I:%M %p, %d/%m")
     @summary = info[:currently][:summary]
