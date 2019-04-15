@@ -7,7 +7,7 @@ class GeocodeService
 
   def get_address(location)
     address = get_json(address_request(location))
-    binding.pry
+    only_citystate(address[:plus_code][:compound_code])
   end
 
   private
@@ -34,5 +34,11 @@ class GeocodeService
 
   def get_json(response)
     JSON.parse(response.body, symbolize_names: true)
+  end
+
+  def only_citystate(compound_code)
+    code_city_state = compound_code.split(",")
+    code_city = code_city_state[0].split(" ")
+    code_city[1] + "," + code_city_state[1]
   end
 end

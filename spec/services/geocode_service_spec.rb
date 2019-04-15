@@ -25,8 +25,13 @@ RSpec.describe GeocodeService do
 
         response = service.get_address({lat:"39.7392358", long: "-104.990251"})
 
-        expect(response).to be_a(Hash)
-        #more to come
+        expect(response).to be_a(String)
+        expect(response).to eq("Denver, CO")
+
+        response = service.get_address({lat:"40.4167754", long: "-3.7037902"})
+
+        expect(response).to be_a(String)
+        expect(response).to eq("Madrid, Spain")
       end
     end
   end
