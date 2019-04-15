@@ -21,7 +21,6 @@ class GeocodeService
   def geocode_request(location)
     conn.get("geocode/json") do |req|
       req.params[:address] = location
-      req.params[:key] = ENV['GEOCODE_API']
     end
   end
 
