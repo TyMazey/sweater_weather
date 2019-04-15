@@ -9,6 +9,12 @@ RSpec.describe AntipodeFacade  do
   end
 
   describe 'instance methods' do
-    
+    describe 'get antipode' do
+      it "returns the antipode of a givin city" do
+        facade = AntipodeFacade.new("hongkong")
+
+        expect(facade.get_antipode).to eq("")
+      end
+    end
   end
 end
