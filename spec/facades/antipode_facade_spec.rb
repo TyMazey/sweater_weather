@@ -21,7 +21,7 @@ RSpec.describe AntipodeFacade  do
       it 'returns an antipode weather object' do
         facade = AntipodeFacade.new("hongkong")
 
-        returned = facade.antipode_weather
+        returned = facade.antipode_weather("hongkong")
 
         expect(returned).to be_a(AntipodeWeather)
         expect(returned.location_name).to eq("Cerrillos, Jujuy")
