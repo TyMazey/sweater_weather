@@ -19,5 +19,15 @@ RSpec.describe GeocodeService do
         expect(response).to have_key(:lng)
       end
     end
+    describe 'get address' do
+      it 'can return the city for a llat and longitude' do
+        service = GeocodeService.new
+
+        response = service.get_address({lat:"39.7392358", long: "-104.990251"})
+
+        expect(response).to be_a(Hash)
+        #more to come
+      end
+    end
   end
 end
