@@ -7,7 +7,7 @@ class AntipodeFacade < ForecastFacade
   end
 
   def antipode_weather
-    AntipodeWeather.new(get_antipode, get_forecast)
+    AntipodeWeather.new(get_antipode, get_forecast, @citystate)
   end
 
   private
