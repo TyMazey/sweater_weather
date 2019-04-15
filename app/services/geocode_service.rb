@@ -5,7 +5,18 @@ class GeocodeService
     location[:results][0][:geometry][:location]
   end
 
+  def get_address(location)
+    address = get_json(address_request(location))
+    binding.pry
+  end
+
   private
+
+  def address_request(latlng)
+    conn.get("geocode/json") do |req|
+      req.params[:latlng] = "#{latlng[:lat]},#{latlng[:long]}"
+    end
+  end
 
   def geocode_request(location)
     conn.get("geocode/json") do |req|
@@ -17,6 +28,7 @@ class GeocodeService
   def conn
     Faraday.new("https://maps.googleapis.com/maps/api/") do |faraday|
       faraday.adapter Faraday.default_adapter
+      faraday.params[:key] = ENV['GEOCODE_API']
     end
   end
 
