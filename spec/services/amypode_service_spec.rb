@@ -16,10 +16,8 @@ RSpec.describe DarkskyService do
         response = service.antipode(location)
 
         expect(response).to be_a(Hash)
-        expect(response).to have_key(:data)
-        expect(response[:data]).to have_key(:attributes)
-        expect(response[:data][:attributes]).to have_key(:lat)
-        expect(response[:data][:attributes]).to have_key(:long)
+        expect(response).to have_key(:lat)
+        expect(response).to have_key(:long)
       end
     end
   end

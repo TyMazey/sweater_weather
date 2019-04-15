@@ -1,7 +1,8 @@
 class AmypodeService
 
   def antipode(location)
-    get_json(request_antipode(location))
+    json = get_json(request_antipode(location))
+    json[:data][:attributes]
   end
 
   def request_antipode(location)
