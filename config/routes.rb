@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       get "/favorites", to: "favorites#index"
       post "/users", to: "users#create"
       post "/sessions", to: "sessions#create"
+      get "/antipode", to: "antipode#show"
     end
   end
 end

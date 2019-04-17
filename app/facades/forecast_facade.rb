@@ -5,15 +5,21 @@ class ForecastFacade < LocationFacade
   end
 
   def current_weather
-    CurrentWeather.new(@citystate, get_forecast)
+    Rails.cache.fetch("current_weather#{@citystate}", expires_in: 1.hour) do
+      CurrentWeather.new(@citystate, get_forecast)
+    end
   end
 
   def daily_weather
-    get_forecast[:daily][:data].each_with_index.map { |info, index| DailyWeather.new(index, info) }
+    Rails.cache.fetch("daily_weather#{@citystate}", expires_in: 1.hour) do
+      get_forecast[:daily][:data].each_with_index.map { |info, index| DailyWeather.new(index, info) }
+    end
   end
 
   def hourly_weather
-    get_forecast[:hourly][:data].each_with_index.map { |info, index| HourlyWeather.new(index, info) }
+    Rails.cache.fetch("hourly_weather#{@citystate}", expires_in: 1.hour) do
+      get_forecast[:hourly][:data].each_with_index.map { |info, index| HourlyWeather.new(index, info) }
+    end
   end
 
   def forecast_info(location)
